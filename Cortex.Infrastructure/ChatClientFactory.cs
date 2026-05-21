@@ -14,7 +14,8 @@ public static class ChatClientFactory
 
     public static IChatClient Create(IConfiguration configuration, ILoggerFactory loggerFactory)
     {
-        var logger = loggerFactory.CreateLogger<LoggingChatClientMiddleware>();
+        var loggingLogger = loggerFactory.CreateLogger<LoggingChatClientMiddleware>();
+        var cachingLogger = loggerFactory.CreateLogger<CachingChatClientMiddleware>();
         var anthropicApiKey = configuration["ANTHROPIC_API_KEY"];
 
         if (!string.IsNullOrWhiteSpace(anthropicApiKey))
@@ -23,14 +24,16 @@ public static class ChatClientFactory
                 .AsIChatClient(AnthropicModel)
                 .AsBuilder()
                 .UseFunctionInvocation()
-                .Use(inner => new LoggingChatClientMiddleware(inner, logger))
+                .Use(inner => new CachingChatClientMiddleware(inner, cachingLogger))
+                .Use(inner => new LoggingChatClientMiddleware(inner, loggingLogger))
                 .Build();
         }
 
         var ollamaHost = configuration["OLLAMA_HOST"] ?? DefaultOllamaHost;
         return new ChatClientBuilder(new OllamaApiClient(ollamaHost, OllamaModel))
             .UseFunctionInvocation()
-            .Use(inner => new LoggingChatClientMiddleware(inner, logger))
+            .Use(inner => new CachingChatClientMiddleware(inner, cachingLogger))
+            .Use(inner => new LoggingChatClientMiddleware(inner, loggingLogger))
             .Build();
     }
 }

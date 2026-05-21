@@ -16,7 +16,8 @@ public sealed class NotebookJsonRepository : INotebookRepository
         try
         {
             var entries = await ReadAllAsync();
-            entries.Add(entry);
+            var normalizedEntry = entry with { Tags = entry.Tags.Select(NormalizeForTags).ToArray() };
+            entries.Add(normalizedEntry);
             await WriteAllAsync(entries);
             return Result<Guid>.Success(entry.Id);
         }
@@ -46,7 +47,8 @@ public sealed class NotebookJsonRepository : INotebookRepository
             var entries = await ReadAllAsync();
             var matches = entries.Where(e =>
                 e.Entry.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-                e.Tags.Any(t => t.Contains(NormalizeForTags(query), StringComparison.OrdinalIgnoreCase)));
+                e.Tags.Any(t => NormalizeForTags(t).Contains(
+    NormalizeForTags(query), StringComparison.OrdinalIgnoreCase)));
             return Result<IEnumerable<NotebookEntry>>.Success(matches);
         }
         catch (Exception ex)
