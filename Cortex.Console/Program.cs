@@ -17,7 +17,9 @@ var host = Host.CreateDefaultBuilder(args)
     .UseSerilog()
     .ConfigureServices((context, services) =>
     {
-        services.AddSingleton(ChatClientFactory.Create(context.Configuration));
+        services.AddSingleton(sp => ChatClientFactory.Create(
+    context.Configuration,
+    sp.GetRequiredService<ILoggerFactory>()));
     })
     .Build();
 

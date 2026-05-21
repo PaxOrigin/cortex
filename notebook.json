@@ -54,5 +54,11 @@
     "Tags": [
       "Chores"
     ]
+  },
+  {
+    "Entry": "Questo \u00E8 un test di registrazione.",
+    "Timestamp": "2026-05-21T15:21:12.481472Z",
+    "Id": "ffb30fe5-74c9-4305-984e-a9f368cef75b",
+    "Tags": []
   }
 ]
