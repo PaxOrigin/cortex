@@ -18,12 +18,16 @@ public static class ChatClientFactory
         if (!string.IsNullOrWhiteSpace(anthropicApiKey))
         {
             return new AnthropicClient { ApiKey = anthropicApiKey }
-                .AsIChatClient(AnthropicModel);
+                .AsIChatClient(AnthropicModel)
+                .AsBuilder()
+                .UseFunctionInvocation()
+                .Build();
         }
 
         var ollamaHost = configuration["OLLAMA_HOST"] ?? DefaultOllamaHost;
-        var ollamaClient = new OllamaApiClient(new Uri(ollamaHost));
-        ollamaClient.SelectedModel = OllamaModel;
+        var ollamaClient = new ChatClientBuilder(new OllamaApiClient(ollamaHost, OllamaModel))
+            .UseFunctionInvocation()
+            .Build();
         return ollamaClient;
     }
 }

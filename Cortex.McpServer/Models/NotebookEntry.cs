@@ -1,0 +1,1 @@
+public record NotebookEntry(string Entry, DateTime Timestamp, Guid Id, string[] Tags);
