@@ -52,15 +52,21 @@ public sealed class CachingChatClientMiddleware : DelegatingChatClient
 
         _logger.LogInformation("Cache MISS. Key={Key}", cacheKey);
         var responseBuilder = new StringBuilder();
-
+        var hadToolCalls = false;
         await foreach (var update in base.GetStreamingResponseAsync(messages, options, cancellationToken))
         {
+            if (update.Contents?.OfType<FunctionCallContent>().Any() == true)
+                hadToolCalls = true;
+
             responseBuilder.Append(update.Text ?? string.Empty);
             yield return update;
         }
 
-        var finalResponse = new ChatResponse(new ChatMessage(ChatRole.Assistant, responseBuilder.ToString()));
-        _cache[cacheKey] = finalResponse;
-        _logger.LogInformation("Cache STORE. Key={Key} Length={Length}", cacheKey, responseBuilder.Length);
+        if (!hadToolCalls && responseBuilder.Length > 0)
+        {
+            var finalResponse = new ChatResponse(new ChatMessage(ChatRole.Assistant, responseBuilder.ToString()));
+            _cache[cacheKey] = finalResponse;
+            _logger.LogInformation("Cache STORE. Key={Key} Length={Length}", cacheKey, responseBuilder.Length);
+        }
     }
 }

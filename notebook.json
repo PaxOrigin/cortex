@@ -1,64 +1,50 @@
 [
   {
-    "Entry": "Devo fare la spesa dopo: fazzoletti, proteina, zucchine, pane",
-    "Timestamp": "2026-05-21T14:04:18.760997Z",
-    "Id": "8045b794-c9b9-4cac-ad6f-13399e7c7dfd",
+    "Entry": "Tomorrow I need to buy coke, cookies and bananas",
+    "Timestamp": "2026-05-22T08:29:02.155468Z",
+    "Id": "7144a167-2429-4365-9822-151b040fca6b",
     "Tags": [
-      "Spessa"
+      "Grocery"
     ]
   },
   {
-    "Entry": "Patate",
-    "Timestamp": "2026-05-21T14:04:46.539199Z",
-    "Id": "34429cf3-ae73-4aa7-ab76-5c94468d120a",
+    "Entry": "Tomorrow I need to do the Laundry in the afternoon",
+    "Timestamp": "2026-05-22T08:29:50.429115Z",
+    "Id": "4407ea02-8ca5-47cf-807e-07844231edfd",
     "Tags": [
-      "Spessa"
+      "Chore"
     ]
   },
   {
-    "Entry": "Lista della spesa: fazzoletti, proteina, zucchine, pane, patate.",
-    "Timestamp": "2026-05-21T14:05:34.740569Z",
-    "Id": "f5dd7cf0-c07e-4207-bfd2-8c25b3f80ec2",
+    "Entry": "I need to read Pragmatic Programmer, 2 chapters before monday",
+    "Timestamp": "2026-05-22T08:30:16.762851Z",
+    "Id": "46cdc5a8-36fe-4ff3-a4be-d7cfacecbb70",
     "Tags": [
-      "@Spessa"
+      "Study"
     ]
   },
   {
-    "Entry": "zucchero",
-    "Timestamp": "2026-05-21T14:06:04.282986Z",
-    "Id": "031842a7-fc3f-4582-aaa9-9b906d57dc0f",
+    "Entry": "Tomorrow I also need to study MCP Clients",
+    "Timestamp": "2026-05-22T08:32:08.136227Z",
+    "Id": "0d01f6f9-4eb8-4247-b513-3944e098735b",
     "Tags": [
-      "Spessa"
+      "Study"
     ]
   },
   {
-    "Entry": "Tomorrow I need to buy groceries in the morning: Zucchini, pasta, mozzarella, a protein and carrots",
-    "Timestamp": "2026-05-21T14:11:53.672301Z",
-    "Id": "10fa8a45-198e-4f21-9133-bfcbee44936a",
+    "Entry": "On Monday I should call Karate @Sport",
+    "Timestamp": "2026-05-22T09:54:33.256191Z",
+    "Id": "3de94a3a-1964-4f63-92dc-c8afefb2df03",
     "Tags": [
-      "Groceries"
+      "Sport"
     ]
   },
   {
-    "Entry": "I want to buy 3 new plates",
-    "Timestamp": "2026-05-21T14:12:11.340068Z",
-    "Id": "461f48cf-aa93-46af-b8a7-e515dd881cf8",
+    "Entry": "Tomorrow I need to buy coffee and eggs as well @Grocery",
+    "Timestamp": "2026-05-22T10:06:28.246312Z",
+    "Id": "e14daaf7-6ce2-4e7a-9564-4eee95853dc0",
     "Tags": [
-      "Groceries"
+      "Grocery"
     ]
-  },
-  {
-    "Entry": "Will need to do laundry in the morning.",
-    "Timestamp": "2026-05-21T14:12:31.389155Z",
-    "Id": "87eaa2c0-50f8-4e05-95ff-b3826022809b",
-    "Tags": [
-      "Chores"
-    ]
-  },
-  {
-    "Entry": "Questo \u00E8 un test di registrazione.",
-    "Timestamp": "2026-05-21T15:21:12.481472Z",
-    "Id": "ffb30fe5-74c9-4305-984e-a9f368cef75b",
-    "Tags": []
   }
 ]

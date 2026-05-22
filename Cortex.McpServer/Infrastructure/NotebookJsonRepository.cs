@@ -65,6 +65,9 @@ public sealed class NotebookJsonRepository : INotebookRepository
             return [];
 
         var json = await File.ReadAllTextAsync(_filePath);
+        if (string.IsNullOrWhiteSpace(json))
+            return [];
+
         return JsonSerializer.Deserialize<List<NotebookEntry>>(json) ?? [];
     }
 
